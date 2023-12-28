@@ -52,6 +52,7 @@
           <b-row>
             <b-col cols="3" v-for="(good,id) in searchInGoods()" :key="id">
 
+
               <b-card
                 
                 :title="good.title"
@@ -81,17 +82,20 @@
 </template>
 
 <script>
+import jsonData from '../src/jsonData.json'
+
 export default {
-  name: 'App',
+ name: 'App',
   data: () => ({
-    goods: [],
+    goods: jsonData,
     categories: [],
     currentCat: '',
     text: ''
   }),
+  
   methods: {
     getAllGoods() {
-      fetch('https://fakestoreapi.com/products')
+      fetch(jsonData)
             .then(res=>res.json())
             .then(json=>{
               this.goods = json
