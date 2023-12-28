@@ -83,12 +83,12 @@
 
 <script>
 import jsonData from '../src/jsonData.json'
-
+import jsonCategories from '../src/categories'
 export default {
  name: 'App',
   data: () => ({
     goods: jsonData,
-    categories: [],
+    categories: jsonCategories,
     currentCat: '',
     text: ''
   }),
@@ -102,7 +102,7 @@ export default {
             })
     },
     getAllCategories() {
-      fetch('https://fakestoreapi.com/products/categories')
+      fetch(jsonCategories)
             .then(res=>res.json())
             .then(json=>{
               this.categories = json
