@@ -44,7 +44,7 @@
         
         </b-col>
         <b-col cols="10">
-          <b-jumbotron header="BootstrapVue" lead="Компоненты Bootstrap v4 для Vue.js 2">
+          <b-jumbotron header="Новогодние заварушки" lead="Всё для тех, кто не успел подготовиться заранее">
             <p>Для получения дополнительной информации посетите веб-сайт</p>
             <b-button variant="primary" href="#">Больше информации</b-button>
           </b-jumbotron>
