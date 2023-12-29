@@ -82,27 +82,42 @@
 </template>
 
 <script>
-import jsonData from '../src/jsonData.json'
-import jsonCategories from '../src/categories'
 export default {
- name: 'App',
+  name: 'App',
   data: () => ({
-    goods: jsonData,
-    categories: jsonCategories,
+    goods: [],
+    categories: [],
     currentCat: '',
     text: ''
   }),
-  
   methods: {
-    getAllGoods() {
-      fetch(jsonData)
+    async getAllGoods() {
+      await fetch('/api/goods.php')
             .then(res=>res.json())
             .then(json=>{
               this.goods = json
             })
     },
+    async bay(id) {
+      let order = {
+        id: null,
+        good_id: id,
+        phone: prompt("Введите номер телефона", "Не помню...")
+      };
+
+      let response = await fetch('/api/orders.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8'
+        },
+        body: JSON.stringify(order)
+      });
+
+      let result = await response.json();
+      console.log(result);
+    },
     getAllCategories() {
-      fetch(jsonCategories)
+      fetch('/api/categories.php')
             .then(res=>res.json())
             .then(json=>{
               this.categories = json
